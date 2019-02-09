@@ -11,7 +11,7 @@ const token = getToken()
 
 const initialState = {
   token: token ? token : null,
-  user: null,
+  user: {},
   authenticating: false,
   error: false,
 }
@@ -26,6 +26,7 @@ export default (state = initialState, action) => {
       }
 
     case SIGN_IN_SUCCESS:
+    console.log(action, 'ACTION')
       return {
         ...state,
         authenticating: false,
