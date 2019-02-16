@@ -40,7 +40,7 @@ const Header = ({
                 <Avatar src={user.avatar} />
               </Link>
             )}
-            <Button primary to='/topic/new' title="New Topic"/>
+            <Button primary={true} to='/topic/new' title="New Topic"/>
           </Box>
         </Flex>
       </Box>

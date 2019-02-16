@@ -1,21 +1,16 @@
 import React, { Fragment } from 'react'
-import { graphql, Mutation, Query } from "react-apollo";
+import { graphql } from "react-apollo";
 import { connect } from 'react-redux'
 import { isEqual, uniqueId } from 'lodash';
 import styled from 'styled-components'
 import { Flex, Box } from '@rebass/grid'
-import Title from '../Title'
-import TitleInput from '../TitleInput'
-import Menu from '../Menu'
 import Link from '../Link'
 import Container from '../Container'
 import NewLink from 'components/Link/New'
 import NewTag from 'components/Tag/New'
 import TopNavigation from 'components/TopNavigation';
-import Topic from '../index'
 import CREATE_TOPIC from '../../../graphql/mutations/createTopic';
 import GET_PREVIEW_LINK from '../../../graphql/mutations/getPreviewLink';
-import client from '../../../graphql';
 
 class TopicPage extends React.Component {
   state = {
@@ -65,23 +60,22 @@ class TopicPage extends React.Component {
   handleTopic = (input) => (e) => {
     switch (input) {
       case 'title':
-        this.setState({
+        return this.setState({
           ...this.state,
           topic: {
             ...this.state.topic,
             title: e.target.value
           }
         });
-        return;
       case 'input':
-        this.setState({
+        return this.setState({
           input: {
             ...this.state.input,
             url: e.target.value
           }
         });
       default:
-        this.state;
+        return this.state;
     }
   }
 
@@ -98,7 +92,7 @@ class TopicPage extends React.Component {
 
   onSaveTopic = async() => {
     const { topic } = this.state;
-    const { data } = await this.props.mutate({
+    await this.props.mutate({
       variables: {
         title: topic.title,
         links: topic.links
@@ -108,8 +102,6 @@ class TopicPage extends React.Component {
   }
 
   render() {
-    const { marginBottom } = this.props;
-
     return (
        <Fragment>
           <TopNavigation onClickSave={this.onSaveTopic} />

@@ -52,7 +52,6 @@ const Link = ({ edit = true, title, link, tags }) => (
 
       <div>
         {tags.map(tag => {
-          console.log(tag.title, "tag.title")
           return (<Tag key={tag.id}>
             {tag.title}
             <StyledXIcon />

@@ -34,7 +34,7 @@ const Link = ({
         </StyledLinkContainer>
       </StyledDiv>
       {tags && tags.map(tag => {
-        return (<Tag>{tag.title}</Tag>)
+        return (<Tag key={tag.id}>{tag.title}</Tag>)
       })}
     </Fragment >
   )

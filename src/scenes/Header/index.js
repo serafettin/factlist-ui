@@ -5,8 +5,6 @@ import {
   showSignInModal,
 } from 'modules/modal/actions'
 
-import config from 'config';
-
 const Header = ({
   authenticating,
   user,
@@ -15,8 +13,6 @@ const Header = ({
   showSignInModal,
   onClickNewTopic,
 }) => {
-  console.log(config.API_ENDPOINT, "process.env.REACT_APP_API_ENDPOINT")
-  console.log(authenticating, "authenticating")
   return (
     <HeaderComponent
       user={user}

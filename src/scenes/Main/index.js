@@ -15,7 +15,7 @@ import { InstantSearch } from 'react-instantsearch-dom';
 
 class Main extends Component {
   componentDidMount() {
-    const { topics, fetchTopicsRequest } = this.props
+    const { topics, fetchTopicsRequest } = this.props;
 
     if (!topics.length) {
       fetchTopicsRequest()
@@ -68,6 +68,11 @@ class Main extends Component {
     )
   }
 }
+
+Main.propTypes = {
+  topics: PropTypes.array,
+  fetchTopicsRequest: PropTypes.func,
+};
 
 const mapStateToProps = state => ({
   requesting: state.topic.all.requesting,
